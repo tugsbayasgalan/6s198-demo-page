@@ -14,7 +14,11 @@ def hello_world():
         genre = form['selectedOption']
         submitted = "true"
 
-        generated_lyrics = generate_lyrics(seedtext, genre)
+        sample = "Almost heaven, West Virginia\nBlue ridge mountains, Shenandoah river\nLife is old there, older than the trees\nYounger than the mountains, blowing like a breeze\nCountry roads, take me home".lower()
+        if len(sample) > 100:
+            sample = sample[:100]
+
+        generated_lyrics = generate_lyrics(sample, genre)
 
 
 
