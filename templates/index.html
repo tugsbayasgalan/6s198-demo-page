@@ -1,0 +1,93 @@
+<html>
+
+<style>
+
+
+
+
+</style>
+
+<body onload="loadTextArea()">
+
+
+
+  <script>
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function handleDropdown() {
+
+      var e = document.getElementById("dropDown");
+      var chosenOption = e.options[e.selectedIndex]
+
+      console.log("This is the selected genre: ", e.options[e.selectedIndex].innerText)
+
+    }
+
+    function loadTextArea() {
+
+      if ({{submitted}}){
+
+        var textArea = document.getElementById("generatedText");
+        textArea.disabled = false;
+
+
+
+
+      } else {
+        var textArea = document.getElementById("generatedText");
+        textArea.disabled = true
+
+      }
+
+    }
+
+
+
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+     }
+    }
+</script>
+
+
+  <div id="title">
+     <h4>Song Lyrics Generator</h4>
+     <h4>Deep and Tugsuu</h4>
+  </div>
+
+  <form action="http://127.0.0.1:5000/" method="post">
+
+    <div>
+      Choose your genre
+    </div>
+    <select id="dropDown" name="selectedOption" onChange="handleDropdown()" required>
+      <option value="country">Country</option>
+      <option value="rap">Rap</option>
+      <option value="other">Other</option>
+    </select>
+    <br />
+    Seed Text:<br>
+    <input type="text" name="seedtext" value="">
+    <br>
+    <input type="submit" value="Submit">
+
+  </form>
+
+  <textarea id="generatedText" rows="20" cols="100">{{generated_lyrics}}</textarea>
+
+
+
+</body>
+
+</html>
