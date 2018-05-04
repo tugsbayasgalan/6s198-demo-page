@@ -18,6 +18,8 @@ def hello_world():
         if len(sample) > 100:
             sample = sample[:100]
 
+
+        #TODO should be actually seedtext
         generated_lyrics = generate_lyrics(sample, genre)
 
 

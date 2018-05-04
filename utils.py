@@ -6,11 +6,12 @@ from keras.layers import Flatten
 from keras.layers import Dropout
 from keras.layers import LSTM
 from keras.utils import np_utils
+from keras import backend
 
 
 filename = "country_lyrics_all.txt"
 raw_text = open(filename).read()
-raw_text = raw_text.lower()
+raw_text = raw_text.lower()[:100000]
 # create mapping of unique chars to integers, and a reverse mapping
 chars = sorted(list(set(raw_text)))
 char_to_int = dict((c, i) for i, c in enumerate(chars))
@@ -29,11 +30,11 @@ def generate_lyrics(input_seed, genre):
     model.add(LSTM(256, input_shape=(seq_length, 1), return_sequences=True))
     model.add(Dropout(0.2))
     model.add(Flatten())
-    model.add(Dense(55, activation='softmax'))
+    model.add(Dense(48, activation='softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='adam')
 
     weights = numpy.load("jank_weights.npy")
-    print "Weights:", weights
+    model.set_weights(weights)
 
 
     #process the user input
@@ -63,4 +64,6 @@ def generate_lyrics(input_seed, genre):
         input_pattern.append(index)
         input_pattern = input_pattern[1:len(input_pattern)]
     print ("\nDone.")
+
+    backend.clear_session()
     return final_result
