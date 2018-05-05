@@ -1,5 +1,5 @@
 import numpy
-
+from keras.models import load_model
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import Flatten
@@ -11,7 +11,7 @@ from keras import backend
 
 filename = "country_lyrics_all.txt"
 raw_text = open(filename).read()
-raw_text = raw_text.lower()[:100000]
+raw_text = raw_text.lower()
 # create mapping of unique chars to integers, and a reverse mapping
 chars = sorted(list(set(raw_text)))
 char_to_int = dict((c, i) for i, c in enumerate(chars))
@@ -30,11 +30,11 @@ def generate_lyrics(input_seed, genre):
     model.add(LSTM(256, input_shape=(seq_length, 1), return_sequences=True))
     model.add(Dropout(0.2))
     model.add(Flatten())
-    model.add(Dense(48, activation='softmax'))
+    model.add(Dense(55, activation='softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='adam')
 
-    weights = numpy.load("jank_weights.npy")
-    model.set_weights(weights)
+    #weights = numpy.load("jank_weights.npy")
+    model.load_weights('weights-improvement-11-1.9338.hdf5')
 
 
     #process the user input
