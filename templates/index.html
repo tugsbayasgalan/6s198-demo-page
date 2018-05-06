@@ -2,9 +2,6 @@
 
 <style>
 
-
-
-
 </style>
 
 <body onload="loadTextArea()">
@@ -15,34 +12,26 @@
       var e = document.getElementById("dropDown");
       var chosenOption = e.options[e.selectedIndex]
       console.log("This is the selected genre: ", e.options[e.selectedIndex].innerText)
-
     }
 
     function handleSubmitButton() {
       var textArea = document.getElementById("generatedText");
       textArea.value = null
-
     }
+  
 
     function loadTextArea() {
-
       if ({{submitted}}){
-
         var textArea = document.getElementById("generatedText");
         textArea.disabled = false;
-
-
       } else {
         var textArea = document.getElementById("generatedText");
         textArea.disabled = true
-
       }
 
     }
 
 </script>
-
-
   <div id="title">
      <h4>Song Lyrics Generator</h4>
      <h4>Deep and Tugsuu</h4>
@@ -61,11 +50,8 @@
     <input type="text" name="seedtext" value="">
     <br>
     <input type="submit" value="Submit" onclick="handleSubmitButton()">
+    <input type="submit" value="Just random submit" onclick="handleRandomSubmitButton()">
   </form>
   <textarea id="generatedText" rows="20" cols="100">{{generated_lyrics}}</textarea>
-
-
-
 </body>
-
 </html>

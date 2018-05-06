@@ -1,4 +1,5 @@
 import numpy
+import h5py
 from keras.models import load_model
 from keras.models import Sequential
 from keras.layers import Dense
@@ -7,6 +8,30 @@ from keras.layers import Dropout
 from keras.layers import LSTM
 from keras.utils import np_utils
 from keras import backend
+
+
+random_samples = numpy.load("random_samples.npy").tolist()
+print(random_samples)
+
+
+samples = []
+stuff = []
+count = 0
+for index, sample in enumerate(random_samples):
+    if count < 100:
+        stuff.append(round(sample*55.0))
+        count += 1
+
+    elif count == 100:
+        samples.append(stuff)
+
+        count = 0
+        stuff = []
+
+
+random_samples = samples
+
+
 
 
 filename = "country_lyrics_all.txt"
@@ -22,9 +47,12 @@ n_vocab = len(chars)
 print ("Total Characters: ", n_chars)
 print ("Total Vocab: ", n_vocab)
 
-def generate_lyrics(input_seed, genre):
+def generate_lyrics(input_seed, genre, random=False):
 
     seq_length = 100 # can be changed later
+
+
+
 
     model = Sequential()
     model.add(LSTM(256, input_shape=(seq_length, 1), return_sequences=True))
@@ -34,22 +62,33 @@ def generate_lyrics(input_seed, genre):
     model.compile(loss='categorical_crossentropy', optimizer='adam')
 
     #weights = numpy.load("jank_weights.npy")
-    model.load_weights('weights-improvement-11-1.9338.hdf5')
+    model.load_weights('weights-improvement-14-1.8716.hdf5')
 
 
     #process the user input
-    input_pattern = []
-    for char in input_seed:
-        if char not in char_to_int:
-            continue
-        else:
-            input_pattern.append(char_to_int[char])
 
-    while len(input_pattern) < seq_length:
-        input_pattern.append(char_to_int['a'])
+    if random:
+
+        random_index = numpy.random.randint(0, len(random_samples)-1)
+        input_pattern = random_samples[random_index]
+
+
+
+    else:
+        input_pattern = []
+        for char in input_seed:
+            if char not in char_to_int:
+                continue
+            else:
+                input_pattern.append(char_to_int[char])
+
+        while len(input_pattern) < seq_length:
+            input_pattern.append(char_to_int['a'])
 
     print ("Seed:")
     print ("\"", ''.join([int_to_char[value] for value in input_pattern]), "\"")
+
+    print (''.join([int_to_char[value] for value in input_pattern]))
     # generate characters
 
     final_result = ""
