@@ -1,11 +1,34 @@
 import numpy
-import sys
+import h5py
+from keras.models import load_model
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import Flatten
 from keras.layers import Dropout
 from keras.layers import LSTM
 from keras.utils import np_utils
+from keras import backend
+
+
+random_samples = numpy.load("random_samples.npy").tolist()
+print(random_samples)
+
+samples = []
+stuff = []
+count = 0
+for index, sample in enumerate(random_samples):
+    if count < 100:
+        stuff.append(round(sample*55.0))
+        count += 1
+
+    elif count == 100:
+        samples.append(stuff)
+
+        count = 0
+        stuff = []
+
+
+random_samples = samples
 
 
 
@@ -23,39 +46,60 @@ n_vocab = len(chars)
 print ("Total Characters: ", n_chars)
 print ("Total Vocab: ", n_vocab)
 
-seq_length = 100 # can be changed later
+def generate_lyrics(input_seed, genre, random=False):
 
-model = Sequential()
-model.add(LSTM(256, input_shape=(seq_length, 1), return_sequences=True))
-model.add(Dropout(0.2))
-model.add(Flatten())
-model.add(Dense(55, activation='softmax'))
-model.compile(loss='categorical_crossentropy', optimizer='adam')
+    seq_length = 100 # can be changed later
 
-weights = numpy.load("jank_weights.npy")
-print ("Seed:")
-print ("\"", ''.join([int_to_char[value] for value in pattern]), "\"")
-# generate characters
-for i in range(1000):
-    x = numpy.reshape(pattern, (1, len(pattern), 1))
-#     print(x.shape)
-    x = x / float(n_vocab)
-    prediction = model.predict(x, verbose=0)
-#     print(prediction.shape)
-#     print(prediction)
-    index = numpy.argmax(prediction)
-    result = int_to_char[index]
-    seq_in = [int_to_char[value] for value in pattern]
-    sys.stdout.write(result)
-    pattern.append(index)
-    pattern = pattern[1:len(pattern)]
-print ("\nDone.")
+
+    model = Sequential()
+    model.add(LSTM(256, input_shape=(seq_length, 1), return_sequences=True))
+    model.add(Dropout(0.2))
+    model.add(Flatten())
+    model.add(Dense(55, activation='softmax'))
+    model.compile(loss='categorical_crossentropy', optimizer='adam')
+
+    #weights = numpy.load("jank_weights.npy")
+    model.load_weights('jank_model.h5')
+
+
+    #process the user input
+
+    if random:
+
+        random_index = numpy.random.randint(0, len(random_samples)-1)
+        input_pattern = random_samples[random_index]
 
 
 
-def generate_lyrics(input_seed, genre):
+    else:
+        input_pattern = []
+        for char in input_seed:
+            if char not in char_to_int:
+                continue
+            else:
+                input_pattern.append(char_to_int[char])
 
+        while len(input_pattern) < seq_length:
+            input_pattern.append(char_to_int['a'])
 
-    #TODO load the Keras model etc and return generated lyrics
+    print ("Seed:")
+    print ("\"", ''.join([int_to_char[value] for value in input_pattern]), "\"")
 
-    return "Pretend this is generated lyrics\nI am Tugsuu\nI am Deep"
+    print (''.join([int_to_char[value] for value in input_pattern]))
+    # generate characters
+
+    final_result = ""
+    for i in range(1000):
+        x = numpy.reshape(input_pattern, (1, len(input_pattern), 1))
+        x = x / float(n_vocab)
+        prediction = model.predict(x, verbose=0)
+        index = numpy.argmax(prediction)
+        result = int_to_char[index]
+        seq_in = [int_to_char[value] for value in input_pattern]
+        final_result += result
+        input_pattern.append(index)
+        input_pattern = input_pattern[1:len(input_pattern)]
+    print ("\nDone.")
+
+    backend.clear_session()
+    return final_result
