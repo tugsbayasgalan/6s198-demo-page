@@ -1,11 +1,8 @@
 <html>
 
-<style>
-
-
-
-
-</style>
+<head>
+  <link rel='stylesheet' type='text/css' href='index.css'>
+</head>
 
 <body onload="loadTextArea()">
 
@@ -68,8 +65,8 @@
 
   <form action="http://127.0.0.1:5000/" method="post">
 
-    <div>
-      Choose your genre
+    <div id="firstprompt">
+      Choose your genre!
     </div>
     <select id="dropDown" name="selectedOption" onChange="handleDropdown()" required>
       <option value="country">Country</option>
