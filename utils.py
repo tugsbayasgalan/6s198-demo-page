@@ -13,7 +13,6 @@ from keras import backend
 random_samples = numpy.load("random_samples.npy").tolist()
 print(random_samples)
 
-
 samples = []
 stuff = []
 count = 0
@@ -52,8 +51,6 @@ def generate_lyrics(input_seed, genre, random=False):
     seq_length = 100 # can be changed later
 
 
-
-
     model = Sequential()
     model.add(LSTM(256, input_shape=(seq_length, 1), return_sequences=True))
     model.add(Dropout(0.2))
@@ -62,7 +59,7 @@ def generate_lyrics(input_seed, genre, random=False):
     model.compile(loss='categorical_crossentropy', optimizer='adam')
 
     #weights = numpy.load("jank_weights.npy")
-    model.load_weights('weights-improvement-14-1.8716.hdf5')
+    model.load_weights('jank_model.h5')
 
 
     #process the user input

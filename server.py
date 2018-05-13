@@ -10,14 +10,11 @@ def main():
 
 
     submitted = "false"
-
     if request.method == "POST":
         form = request.form
-
         seedtext = form['seedtext']
         genre = form['selectedOption']
         submitted = "true"
-
         if seedtext == "":
             generated_lyrics = generate_lyrics(seedtext, genre, random=True)
 
