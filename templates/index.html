@@ -4,7 +4,7 @@
   <link rel='stylesheet' type='text/css' href='index.css'>
 </head>
 
-<body onload="loadTextArea()">
+<body onload="loadTextArea(); window.scroll(0, 20);">
 
   <script>
 
@@ -42,7 +42,7 @@
       </div>
     </div>
 
-
+    <br>
     <form action="http://127.0.0.1:5000/" method="post">
 
       <div id="firstprompt">
@@ -58,7 +58,7 @@
       </div>
 
       <br>
-      
+
       <div id="seed">
         <div id="seedgetter">
           <div id="seedprompt">
@@ -80,7 +80,7 @@
 
 
     <div id="gentext">
-      <textarea id="generatedText" rows="20" cols="100">{{generated_lyrics}}</textarea>
+      <textarea id="generatedText" rows="20" cols="70">{{generated_lyrics}}</textarea>
     </div>
 
     <div id="exportsong">

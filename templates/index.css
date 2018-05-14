@@ -30,18 +30,25 @@ body {
 }
 
 /*css for title and authors*/
+#title {
+	background-color: rgba(0,0,0,0.80);
+	color: white;
+	padding:1px;
+}
+
 #truetitle {
 	text-align: center;
 	font-family: "Courier New", Courier, monospace;
 	font-size: 28px;
-	padding-top: 5px;
+	top: 0;
+	padding-left: 8px;
 }
 
 #subtitle {
 	text-align: center;
-	font-family: Tahoma, Geneva, sans-serif;
-	position: relative;
-	margin-top: -32px;
+	font-family: "Courier New", Courier, monospace;
+	margin-top: -40px;
+	padding-right: 8px;
 
 }
 
@@ -51,6 +58,9 @@ body {
 	padding: 8px;
     background-color: rgba(241,241,241,0.8);
     border-radius: 16px;
+    border-color: rgba(0,0,0,0.2);
+    border-width: 1px;
+    border-style: solid;
     width: 50%;
     margin: 8px auto;
 }
@@ -70,8 +80,11 @@ body {
 	padding: 8px;
     background-color: rgba(241,241,241,0.8);
     border-radius: 16px;
+    border-color: rgba(0,0,0,0.2);
+    border-width: 1px;
+    border-style: solid;
     width: 50%;
-    margin: 8px auto;
+    margin: 8px auto;    
 }
 
 #seedgetter {
@@ -144,10 +157,12 @@ input[type=text] {
 #gentext {
 	text-align: center;
 	margin-top: 8px;
+	margin-bottom: 8px;
 }
 
 #generatedtext {
 	text-align: center;
+	font-size: 18px;
 }
 
 /*css for export option*/
@@ -156,6 +171,9 @@ input[type=text] {
 	padding: 8px;
     background-color: rgba(241,241,241,0.8);
     border-radius: 16px;
+    border-color: rgba(0,0,0,0.2);
+    border-width: 1px;
+    border-style: solid;
     width: 50%;
     margin: 8px auto;
 }
