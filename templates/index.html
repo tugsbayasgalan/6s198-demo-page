@@ -46,13 +46,16 @@
   <form action="http://127.0.0.1:5000/" method="post">
 
     <div id="firstprompt">
-      Choose your genre!
+      <div id="prompt">
+        Choose your genre!
+      </div>
 
-    <select id="dropDown" name="selectedOption" onChange="handleDropdown()" required>
-      <option value="country">Country</option>
-      <option value="rap">Rap</option>
-      <option value="other">Other</option>
-    </select>
+      <select id="dropDown" name="selectedOption" onChange="handleDropdown()" required>
+        <option value="country">Country</option>
+        <option value="rap">Rap</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
 
     <div id="seedgetter">
       <div id="seedprompt">
