@@ -1,3 +1,4 @@
+/*
 #title {
 	background-color: #42F4A4;
 	position: absolute;
@@ -7,6 +8,80 @@
 	height: 50px;
 	box-shadow: 0px 1px;
 }
+*/
 
-#
+body {
+	background: linear-gradient(#D8D8D8, #E0E0E0, #F0F0F0);
+}
+
+
+#truetitle {
+	text-align: center;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 24px;
+	margin-top: 2px;
+}
+
+#subtitle {
+	text-align: center;
+	font-family: Tahoma, Geneva, sans-serif;
+	position: relative;
+	margin-top: -32px;
+
+}
+
+#dropdown {
+	text-align: center;
+	font-size: 12px;
+}
+
+
+#subbuttons {
+	text-align: center;
+}
+
+
+#submitbutton {
+    background-color: #008CBA;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 5px;
+    margin-bottom: 8px;
+}
+
+#submitbutton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#randomsubmitbutton {
+	background-color: #F44336;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 5px;
+    margin-bottom: 8px;
+}
+
+#randomsubmitbutton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+/*style for where text is generated */
+#gentext {
+	text-align: center;
+}
+
+#generatedtext {
+	text-align: center;
+}
+
+
 
