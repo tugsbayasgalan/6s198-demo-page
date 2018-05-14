@@ -53,10 +53,16 @@
       <option value="rap">Rap</option>
       <option value="other">Other</option>
     </select>
-    <br />
-    Seed Text:<br>
-    <input type="text" name="seedtext" value="">
-    <br>
+
+    <div id="seedgetter">
+      <div id="seedprompt">
+        How do you want your song to start?
+      </div>
+
+      <div id="seedinput">
+        <input type="text" name="seedtext" value="" placeholder="Your text here..">
+      </div>
+    </div>
 
 
     <div id="subbuttons">
@@ -65,8 +71,9 @@
     </div>
   </form>
 
+
   <div id="gentext">
-  <textarea id="generatedText" rows="20" cols="100">{{generated_lyrics}}</textarea>
+    <textarea id="generatedText" rows="20" cols="100">{{generated_lyrics}}</textarea>
   </div>
 
 <style>

@@ -18,7 +18,7 @@ body {
 #truetitle {
 	text-align: center;
 	font-family: "Courier New", Courier, monospace;
-	font-size: 24px;
+	font-size: 28px;
 	margin-top: 2px;
 }
 
@@ -35,7 +35,34 @@ body {
 	font-size: 12px;
 }
 
+/*css for seed input field */
+#seedgetter {
+	text-align: center;
+}
 
+#seedprompt {
+	margin-bottom: 8px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 18px;
+}
+
+
+input[type=text] {
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('rightarrowicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+    padding: 12px 20px 12px 40px;
+    border-radius: 8px;
+    margin-bottom: 4px;
+}
+
+/*css for text submit BUTTONS*/
 #subbuttons {
 	text-align: center;
 }
@@ -77,11 +104,13 @@ body {
 /*style for where text is generated */
 #gentext {
 	text-align: center;
+	margin-top: 8px;
 }
 
 #generatedtext {
 	text-align: center;
 }
+
 
 
 
