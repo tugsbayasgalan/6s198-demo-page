@@ -16,7 +16,7 @@ the deep learning models are in the `notebooks` directory.
 First, install neccessary dependencies:
 ```
 sudo pip install Flask 
-sudo pip install Keras 
+sudo pip install keras 
 ```
 Then, cd into the directory and do:
 ```
