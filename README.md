@@ -13,10 +13,18 @@ the outermost layer of the repository and in the `templates` directory. The file
 the deep learning models are in the `notebooks` directory.
 
 ## Instructions to run 
-First, install Flask
+First, install neccessary dependencies:
 ```
 sudo pip install Flask 
+sudo pip install Keras 
 ```
+Then, cd into the directory and do:
+```
+python server.py 
+```
+
+It will launch the app automatically on your local host. 
+
 
 
 ## Credits
