@@ -10,7 +10,14 @@ both of which are included in this repository as well.
 The files in this repository are organized into two parts - files pertaining to the demo UI and files pertaining to the data 
 processing and the deep learning models we designed and employed for this project. The files pertaining the UI are available in
 the outermost layer of the repository and in the `templates` directory. The files relevant to data processing, the datasets, and 
-the deep learning models are in the `notebooks` directory. 
+the deep learning models are in the `notebooks` directory.
+
+## Instructions to run 
+First, install Flask
+```
+sudo pip install Flask 
+```
+
 
 ## Credits
 We would like to thank our LA Emmanuel Mensah for giving us advice and support when we most needed it and putting up with our questions,
