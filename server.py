@@ -19,8 +19,8 @@ def main():
             generated_lyrics = generate_lyrics(seedtext, genre, random=True)
 
         else:
-            sample = "Almost heaven, West Virginia\nBlue ridge mountains, Shenandoah river\nLife is old there, older than me".lower()
-            generated_lyrics = generate_lyrics(sample, genre)
+            seedtext = seedtext.lower()
+            generated_lyrics = generate_lyrics(seedtext, genre)
 
 
     return render_template("index.html", **locals())
@@ -28,4 +28,5 @@ def main():
 
 
 if __name__ == '__main__':
+    app.static_folder = 'static'
     app.run()

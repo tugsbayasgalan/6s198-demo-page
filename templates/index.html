@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <link rel='stylesheet' type='text/css' href='index.css'>
+  <link rel='stylesheet' href="{{ url_for('static', filename='css/index.css') }}">/>
 </head>
 
 <body onload="loadTextArea(); window.scroll(0, 20);">
@@ -9,7 +9,7 @@
   <script>
 
     function handleDropdown() {
-      var e = document.getElementById("dropDown");
+      var e = document.getElementByClass("dropdown");
       var chosenOption = e.options[e.selectedIndex]
       console.log("This is the selected genre: ", e.options[e.selectedIndex].innerText)
     }
@@ -18,7 +18,7 @@
       var textArea = document.getElementById("generatedText");
       textArea.value = null
     }
-  
+
 
     function loadTextArea() {
       if ({{submitted}}){
@@ -49,6 +49,20 @@
         <div id="prompt">
           Choose your genre!
         </div>
+
+       <!-- <div class="dropdown" >
+          <button class="dropbtn">Choose your genre!</button>
+          <div class="dropdown-content">
+             <a href="#">Country</a>
+            <a href="#">Rap</a>
+            <a href="#">Other</a>
+            <select id="dropDown" name="selectedOption" onChange="handleDropdown()" required>
+              <option value="country">Country</option>
+              <option value="rap">Rap</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>  -->
 
         <select id="dropDown" name="selectedOption" onChange="handleDropdown()" required>
           <option value="country">Country</option>
@@ -89,6 +103,10 @@
     </div>
 
     <style>
+
+    #dropDown {
+      font-size: 16px;
+    }
     /* Style The Dropdown Button */
     .dropbtn {
         background-color: #4CAF50;
@@ -139,14 +157,7 @@
     }
     </style>
 
-    <div class="dropdown">
-      <button class="dropbtn">Choose your genre!</button>
-      <div class="dropdown-content">
-        <a href="#">Country</a>
-        <a href="#">Rap</a>
-        <a href="#">Other</a>
-      </div>
-    </div>
+
   </div>
 </body>
 </html>

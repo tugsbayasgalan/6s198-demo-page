@@ -10,28 +10,7 @@ from keras.utils import np_utils
 from keras import backend
 
 
-random_samples = numpy.load("random_samples.npy").tolist()
-print(random_samples)
-
-samples = []
-stuff = []
-count = 0
-for index, sample in enumerate(random_samples):
-    if count < 100:
-        stuff.append(round(sample*55.0))
-        count += 1
-
-    elif count == 100:
-        samples.append(stuff)
-
-        count = 0
-        stuff = []
-
-
-random_samples = samples
-
-
-
+random_samples = numpy.load("random_samples_data.npy").tolist()
 
 filename = "country_lyrics_all.txt"
 raw_text = open(filename).read()
@@ -89,7 +68,7 @@ def generate_lyrics(input_seed, genre, random=False):
     # generate characters
 
     final_result = ""
-    for i in range(1000):
+    for i in range(400):
         x = numpy.reshape(input_pattern, (1, len(input_pattern), 1))
         x = x / float(n_vocab)
         prediction = model.predict(x, verbose=0)
